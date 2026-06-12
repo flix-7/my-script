@@ -121,27 +121,7 @@ local function createNotification(titleText, mainText, playerImageId, duration)
                 end
             end)
 
-            -- سجّل الواجهة الصغيرة كمرجع عام وافعِل إخفاء الواجهة الكبيرة
-            _G.GBORE_SmallGUI = (rawget(_G, "GBORE_SmallGUI") or nil)
-            pcall(function()
-                if _G.GBORE_SmallGUI == nil then
-                    -- حاول الحصول على الواجهة التي أنشأناها باسمها داخل الـ CoreGui
-                    local maybe = game:GetService("CoreGui"):FindFirstChild("GBORE_SmallGUI")
-                    if maybe then _G.GBORE_SmallGUI = maybe end
-                end
-            end)
-
-            -- إخفاء الواجهة الكبيرة لتكون الواجهة الصغيرة هي الرئيسية
-            pcall(function()
-                if ScreenGui and ScreenGui:IsA("ScreenGui") then
-                    ScreenGui.Enabled = false
-                end
-                if Frame and typeof(Frame) == "Instance" then
-                    Frame.Visible = false
-                end
-            end)
-
-            local function antiScriptDetection()
+            
         for i, v in ipairs(Notifications) do
             if v == Notification then
                 table.remove(Notifications, i)
