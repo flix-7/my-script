@@ -385,7 +385,55 @@ WatchButton.TextColor3 = Color3.new(1, 1, 1)
 WatchButton.Font = Enum.Font.GothamBold
 Instance.new("UICorner", WatchButton).CornerRadius = UDim.new(0, 8)
 
-local BangButton = Instance.new("TextButton", ScrollFrame)
+local watchActive = false
+local watchHeartbeat = nil
+
+local function startWatch()
+    if not targetPlayer or not targetPlayer.Character then return end
+    if CheckTargetProtection(targetPlayer.Name) then return end
+    
+    if watchHeartbeat then watchHeartbeat:Disconnect() end
+    
+    watchHeartbeat = RunService.Heartbeat:Connect(function()
+        pcall(function()
+            local targetHRP = targetPlayer.Character:FindFirstChild("HumanoidRootPart")
+            if targetHRP then
+                local camera = Workspace.CurrentCamera
+                camera.CFrame = CFrame.new(targetHRP.Position + Vector3.new(5, 3, 5), targetHRP.Position)
+            end
+        end)
+    end)
+end
+
+local function stopWatch()
+    if watchHeartbeat then
+        watchHeartbeat:Disconnect()
+        watchHeartbeat = nil
+    end
+end
+
+WatchButton.MouseButton1Click:Connect(function()
+    if not targetPlayer then 
+        createNotification("تنبيه", "اختر لاعب أولاً!", "rbxassetid://7992557358", 3)
+        return 
+    end
+    if CheckTargetProtection(targetPlayer.Name) then return end
+
+    watchActive = not watchActive
+    if watchActive then
+        WatchButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+        createGlow(WatchButton)
+        startWatch()
+        createNotification("تنفيذ", "المشاهدة مفعلة ✓", "rbxassetid://7992557358", 2)
+    else
+        WatchButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+        if WatchButton:FindFirstChildOfClass("UIGradient") then
+            WatchButton:FindFirstChildOfClass("UIGradient"):Destroy()
+        end
+        stopWatch()
+        createNotification("إيقاف", "المشاهدة معطلة", "rbxassetid://7992557358", 2)
+    end
+end)
 BangButton.Size = UDim2.new(1, -10, 0, 35)
 BangButton.Text = "نيك خلفي"
 BangButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
