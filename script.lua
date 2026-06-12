@@ -387,19 +387,31 @@ Instance.new("UICorner", WatchButton).CornerRadius = UDim.new(0, 8)
 
 local watchActive = false
 local watchHeartbeat = nil
+local watchOriginalCameraType = nil
+local watchOriginalCameraCFrame = nil
 
 local function startWatch()
     if not targetPlayer or not targetPlayer.Character then return end
     if CheckTargetProtection(targetPlayer.Name) then return end
-    
+
     if watchHeartbeat then watchHeartbeat:Disconnect() end
-    
-    watchHeartbeat = RunService.Heartbeat:Connect(function()
+
+    local camera = Workspace.CurrentCamera
+    if camera then
+        watchOriginalCameraType = camera.CameraType
+        watchOriginalCameraCFrame = camera.CFrame
+        camera.CameraType = Enum.CameraType.Scriptable
+    end
+
+    watchHeartbeat = RunService.RenderStepped:Connect(function()
         pcall(function()
+            if not targetPlayer or not targetPlayer.Character then return end
             local targetHRP = targetPlayer.Character:FindFirstChild("HumanoidRootPart")
             if targetHRP then
                 local camera = Workspace.CurrentCamera
-                camera.CFrame = CFrame.new(targetHRP.Position + Vector3.new(5, 3, 5), targetHRP.Position)
+                if camera then
+                    camera.CFrame = CFrame.new(targetHRP.Position + Vector3.new(5, 3, 5), targetHRP.Position)
+                end
             end
         end)
     end)
@@ -410,6 +422,16 @@ local function stopWatch()
         watchHeartbeat:Disconnect()
         watchHeartbeat = nil
     end
+
+    local camera = Workspace.CurrentCamera
+    if camera and watchOriginalCameraType then
+        camera.CameraType = watchOriginalCameraType
+        if watchOriginalCameraCFrame then
+            camera.CFrame = watchOriginalCameraCFrame
+        end
+    end
+    watchOriginalCameraType = nil
+    watchOriginalCameraCFrame = nil
 end
 
 WatchButton.MouseButton1Click:Connect(function()
@@ -434,7 +456,8 @@ WatchButton.MouseButton1Click:Connect(function()
         createNotification("إيقاف", "المشاهدة معطلة", "rbxassetid://7992557358", 2)
     end
 end)
-BangButton.Size = UDim2.new(1, -10, 0, 35)
+
+local BangButton = Instance.new("TextButton", ScrollFrame)
 BangButton.Text = "نيك خلفي"
 BangButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 BangButton.TextColor3 = Color3.new(1, 1, 1)
@@ -536,7 +559,7 @@ BangButton.MouseButton1Click:Connect(function()
 
     bangActive = not bangActive
     if bangActive then
-        BangButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+        BangButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         createGlow(BangButton)
         startBang()
         createNotification("تنفيذ", "البانق الخلفي مفعل ✓", "rbxassetid://7992557358", 2)
@@ -626,7 +649,7 @@ FaceBangButton.MouseButton1Click:Connect(function()
 
     faceBangActive = not faceBangActive
     if faceBangActive then
-        FaceBangButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+        FaceBangButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         createGlow(FaceBangButton)
         spawn(updateFaceBang)
         createNotification("تنفيذ", "البانق الوجهي مفعل ✓", "rbxassetid://7992557358", 2)
@@ -697,7 +720,7 @@ HeadSitButton.MouseButton1Click:Connect(function()
 
     headSitActive = not headSitActive
     if headSitActive then
-        HeadSitButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+        HeadSitButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         createGlow(HeadSitButton)
         startHeadSit()
         createNotification("تنفيذ", "الجلوس مفعل ✓", "rbxassetid://7992557358", 2)
@@ -770,7 +793,7 @@ BackpackButton.MouseButton1Click:Connect(function()
 
     backpackActive = not backpackActive
     if backpackActive then
-        BackpackButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+        BackpackButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         createGlow(BackpackButton)
         startBackpack()
         createNotification("تنفيذ", "حقيبة الظهر مفعلة ✓", "rbxassetid://7992557358", 2)
@@ -826,7 +849,7 @@ SuckButton.MouseButton1Click:Connect(function()
 
     suckActive = not suckActive
     if suckActive then
-        SuckButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+        SuckButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         createGlow(SuckButton)
         task.spawn(updateSuck)
         createNotification("تنفيذ", "المص مفعل ✓", "rbxassetid://7992557358", 2)
@@ -925,7 +948,7 @@ BenxButton.MouseButton1Click:Connect(function()
 
     benxActive = not benxActive
     if benxActive then
-        BenxButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+        BenxButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         createGlow(BenxButton)
         startBenx()
         createNotification("تنفيذ", "الاغتصاب مفعل ✓", "rbxassetid://7992557358", 2)
@@ -953,7 +976,7 @@ end)
 SpamBtn.MouseButton1Click:Connect(function()
     spamActive = not spamActive
     SpamBtn.Text = spamActive and "إيقاف السبام" or "سبام"
-    SpamBtn.BackgroundColor3 = spamActive and Color3.fromRGB(150, 150, 150) or Color3.fromRGB(80, 80, 80)
+    SpamBtn.BackgroundColor3 = spamActive and Color3.fromRGB(80, 80, 80) or Color3.fromRGB(80, 80, 80)
     
     if spamActive then
         task.spawn(function() 
@@ -1005,7 +1028,7 @@ ShieldBtn.MouseButton1Click:Connect(function()
         end
     end)
     ShieldBtn.Text = "تم التنظيف!"
-    ShieldBtn.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
+    ShieldBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
     createNotification("حماية", "تم تنظيف كل التأثيرات ✓", "rbxassetid://7992557358", 3)
     task.wait(2)
     ShieldBtn.Text = "حماية / تنظيف"
