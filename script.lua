@@ -173,8 +173,8 @@ ScreenGui.ResetOnSpawn = false
 ScreenGui.Enabled = true
 
 local MainFrame = Instance.new("Frame", ScreenGui)
-MainFrame.Size = UDim2.new(0, 400, 0, 600)
-MainFrame.Position = UDim2.new(0.5, -200, 0.5, -300)
+MainFrame.Size = UDim2.new(0, 300, 0, 350)
+MainFrame.Position = UDim2.new(0.5, -150, 0.5, -175)
 MainFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 MainFrame.Active = true
 MainFrame.Draggable = true
@@ -213,7 +213,7 @@ Container.BackgroundTransparency = 1
 
 MinBtn.MouseButton1Click:Connect(function()
     Minimized = not Minimized
-    MainFrame.Size = Minimized and UDim2.new(0, 400, 0, 40) or UDim2.new(0, 400, 0, 600)
+    MainFrame.Size = Minimized and UDim2.new(0, 300, 0, 40) or UDim2.new(0, 300, 0, 350)
     Container.Visible = not Minimized
     MinBtn.Text = Minimized and "+" or "-"
 end)
@@ -224,7 +224,7 @@ ScrollFrame.Size = UDim2.new(1, -10, 1, -10)
 ScrollFrame.Position = UDim2.new(0, 5, 0, 5)
 ScrollFrame.BackgroundTransparency = 1
 ScrollFrame.BorderSizePixel = 0
-ScrollFrame.CanvasSize = UDim2.new(0, 0, 0, 1200)
+ScrollFrame.CanvasSize = UDim2.new(0, 0, 0, 900)
 ScrollFrame.ScrollBarThickness = 8
 
 -- تخطيط قائمة
@@ -236,7 +236,7 @@ UIListLayout.FillDirection = Enum.FillDirection.Vertical
 -- 📝 قسم الأوامر
 -- ============================
 local CmdLabel = Instance.new("TextLabel", ScrollFrame)
-CmdLabel.Size = UDim2.new(1, -10, 0, 30)
+CmdLabel.Size = UDim2.new(1, -10, 0, 25)
 CmdLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 CmdLabel.Text = "📝 الأوامر والحماية"
 CmdLabel.Font = Enum.Font.GothamBold
@@ -244,7 +244,7 @@ CmdLabel.TextColor3 = Color3.new(1, 1, 1)
 Instance.new("UICorner", CmdLabel).CornerRadius = UDim.new(0, 8)
 
 local CmdBox = Instance.new("TextBox", ScrollFrame)
-CmdBox.Size = UDim2.new(1, -10, 0, 40)
+CmdBox.Size = UDim2.new(1, -10, 0, 35)
 CmdBox.PlaceholderText = "أدخل الأمر"
 CmdBox.Text = "/nv"
 CmdBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
@@ -252,7 +252,7 @@ CmdBox.TextColor3 = Color3.new(1, 1, 1)
 Instance.new("UICorner", CmdBox).CornerRadius = UDim.new(0, 8)
 
 local SpeedBox = Instance.new("TextBox", ScrollFrame)
-SpeedBox.Size = UDim2.new(1, -10, 0, 40)
+SpeedBox.Size = UDim2.new(1, -10, 0, 35)
 SpeedBox.PlaceholderText = "سرعة السبام (مثال: 0.2)"
 SpeedBox.Text = "0.2"
 SpeedBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
@@ -260,33 +260,33 @@ SpeedBox.TextColor3 = Color3.new(1, 1, 1)
 Instance.new("UICorner", SpeedBox).CornerRadius = UDim.new(0, 8)
 
 local SendBtn = Instance.new("TextButton", ScrollFrame)
-SendBtn.Size = UDim2.new(1, -10, 0, 40)
+SendBtn.Size = UDim2.new(1, -10, 0, 35)
 SendBtn.Text = "📤 ارسال مره واحده"
-SendBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 200)
+SendBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 SendBtn.TextColor3 = Color3.new(1, 1, 1)
 SendBtn.Font = Enum.Font.GothamBold
 Instance.new("UICorner", SendBtn).CornerRadius = UDim.new(0, 8)
 
 local SpamBtn = Instance.new("TextButton", ScrollFrame)
-SpamBtn.Size = UDim2.new(1, -10, 0, 40)
+SpamBtn.Size = UDim2.new(1, -10, 0, 35)
 SpamBtn.Text = "🔁 سبام"
-SpamBtn.BackgroundColor3 = Color3.fromRGB(200, 100, 0)
+SpamBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 SpamBtn.TextColor3 = Color3.new(1, 1, 1)
 SpamBtn.Font = Enum.Font.GothamBold
 Instance.new("UICorner", SpamBtn).CornerRadius = UDim.new(0, 8)
 
 local BatchBtn = Instance.new("TextButton", ScrollFrame)
-BatchBtn.Size = UDim2.new(1, -10, 0, 40)
+BatchBtn.Size = UDim2.new(1, -10, 0, 35)
 BatchBtn.Text = "💥 تخريب جماعي"
-BatchBtn.BackgroundColor3 = Color3.fromRGB(200, 0, 0)
+BatchBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 BatchBtn.TextColor3 = Color3.new(1, 1, 1)
 BatchBtn.Font = Enum.Font.GothamBold
 Instance.new("UICorner", BatchBtn).CornerRadius = UDim.new(0, 8)
 
 local ShieldBtn = Instance.new("TextButton", ScrollFrame)
-ShieldBtn.Size = UDim2.new(1, -10, 0, 40)
+ShieldBtn.Size = UDim2.new(1, -10, 0, 35)
 ShieldBtn.Text = "🛡️ حماية / تنظيف"
-ShieldBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 100)
+ShieldBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 ShieldBtn.TextColor3 = Color3.new(1, 1, 1)
 ShieldBtn.Font = Enum.Font.GothamBold
 Instance.new("UICorner", ShieldBtn).CornerRadius = UDim.new(0, 8)
@@ -295,7 +295,7 @@ Instance.new("UICorner", ShieldBtn).CornerRadius = UDim.new(0, 8)
 -- 👤 قسم الاستهداف
 -- ============================
 local TargetLabel = Instance.new("TextLabel", ScrollFrame)
-TargetLabel.Size = UDim2.new(1, -10, 0, 30)
+TargetLabel.Size = UDim2.new(1, -10, 0, 25)
 TargetLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 TargetLabel.Text = "👤 نظام الاستهداف"
 TargetLabel.Font = Enum.Font.GothamBold
@@ -303,14 +303,14 @@ TargetLabel.TextColor3 = Color3.new(1, 1, 1)
 Instance.new("UICorner", TargetLabel).CornerRadius = UDim.new(0, 8)
 
 local NickTextBox = Instance.new("TextBox", ScrollFrame)
-NickTextBox.Size = UDim2.new(1, -10, 0, 40)
+NickTextBox.Size = UDim2.new(1, -10, 0, 35)
 NickTextBox.PlaceholderText = "ابحث عن اللاعب..."
 NickTextBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 NickTextBox.TextColor3 = Color3.new(1, 1, 1)
 Instance.new("UICorner", NickTextBox).CornerRadius = UDim.new(0, 8)
 
 local UserLabel = Instance.new("TextLabel", ScrollFrame)
-UserLabel.Size = UDim2.new(1, -10, 0, 30)
+UserLabel.Size = UDim2.new(1, -10, 0, 25)
 UserLabel.Text = "الحساب: غير محدد"
 UserLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 UserLabel.TextColor3 = Color3.fromRGB(100, 200, 255)
@@ -321,7 +321,7 @@ Instance.new("UICorner", UserLabel).CornerRadius = UDim.new(0, 8)
 -- 💪 قسم الحركات
 -- ============================
 local ActionsLabel = Instance.new("TextLabel", ScrollFrame)
-ActionsLabel.Size = UDim2.new(1, -10, 0, 30)
+ActionsLabel.Size = UDim2.new(1, -10, 0, 25)
 ActionsLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 ActionsLabel.Text = "💪 حركات الاستهداف"
 ActionsLabel.Font = Enum.Font.GothamBold
@@ -378,7 +378,7 @@ NickTextBox:GetPropertyChangedSignal("Text"):Connect(setTargetFromText)
 -- 🎮 أزرار الحركات
 -- ============================
 local WatchButton = Instance.new("TextButton", ScrollFrame)
-WatchButton.Size = UDim2.new(1, -10, 0, 40)
+WatchButton.Size = UDim2.new(1, -10, 0, 35)
 WatchButton.Text = "👁️ مشاهدة"
 WatchButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 WatchButton.TextColor3 = Color3.new(1, 1, 1)
@@ -386,49 +386,49 @@ WatchButton.Font = Enum.Font.GothamBold
 Instance.new("UICorner", WatchButton).CornerRadius = UDim.new(0, 8)
 
 local BangButton = Instance.new("TextButton", ScrollFrame)
-BangButton.Size = UDim2.new(1, -10, 0, 40)
+BangButton.Size = UDim2.new(1, -10, 0, 35)
 BangButton.Text = "💥 بانق خلفي"
-BangButton.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
+BangButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 BangButton.TextColor3 = Color3.new(1, 1, 1)
 BangButton.Font = Enum.Font.GothamBold
 Instance.new("UICorner", BangButton).CornerRadius = UDim.new(0, 8)
 
 local FaceBangButton = Instance.new("TextButton", ScrollFrame)
-FaceBangButton.Size = UDim2.new(1, -10, 0, 40)
+FaceBangButton.Size = UDim2.new(1, -10, 0, 35)
 FaceBangButton.Text = "😛 بانق وجهي"
-FaceBangButton.BackgroundColor3 = Color3.fromRGB(150, 0, 50)
+FaceBangButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 FaceBangButton.TextColor3 = Color3.new(1, 1, 1)
 FaceBangButton.Font = Enum.Font.GothamBold
 Instance.new("UICorner", FaceBangButton).CornerRadius = UDim.new(0, 8)
 
 local HeadSitButton = Instance.new("TextButton", ScrollFrame)
-HeadSitButton.Size = UDim2.new(1, -10, 0, 40)
+HeadSitButton.Size = UDim2.new(1, -10, 0, 35)
 HeadSitButton.Text = "🪑 جلوس فوق الرأس"
-HeadSitButton.BackgroundColor3 = Color3.fromRGB(100, 50, 150)
+HeadSitButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 HeadSitButton.TextColor3 = Color3.new(1, 1, 1)
 HeadSitButton.Font = Enum.Font.GothamBold
 Instance.new("UICorner", HeadSitButton).CornerRadius = UDim.new(0, 8)
 
 local BackpackButton = Instance.new("TextButton", ScrollFrame)
-BackpackButton.Size = UDim2.new(1, -10, 0, 40)
+BackpackButton.Size = UDim2.new(1, -10, 0, 35)
 BackpackButton.Text = "🎒 حقيبة ظهر"
-BackpackButton.BackgroundColor3 = Color3.fromRGB(100, 100, 50)
+BackpackButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 BackpackButton.TextColor3 = Color3.new(1, 1, 1)
 BackpackButton.Font = Enum.Font.GothamBold
 Instance.new("UICorner", BackpackButton).CornerRadius = UDim.new(0, 8)
 
 local SuckButton = Instance.new("TextButton", ScrollFrame)
-SuckButton.Size = UDim2.new(1, -10, 0, 40)
+SuckButton.Size = UDim2.new(1, -10, 0, 35)
 SuckButton.Text = "💦 مص"
-SuckButton.BackgroundColor3 = Color3.fromRGB(50, 100, 150)
+SuckButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 SuckButton.TextColor3 = Color3.new(1, 1, 1)
 SuckButton.Font = Enum.Font.GothamBold
 Instance.new("UICorner", SuckButton).CornerRadius = UDim.new(0, 8)
 
 local BenxButton = Instance.new("TextButton", ScrollFrame)
-BenxButton.Size = UDim2.new(1, -10, 0, 40)
+BenxButton.Size = UDim2.new(1, -10, 0, 35)
 BenxButton.Text = "🔥 اغتصاب"
-BenxButton.BackgroundColor3 = Color3.fromRGB(150, 50, 0)
+BenxButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 BenxButton.TextColor3 = Color3.new(1, 1, 1)
 BenxButton.Font = Enum.Font.GothamBold
 Instance.new("UICorner", BenxButton).CornerRadius = UDim.new(0, 8)
@@ -488,12 +488,12 @@ BangButton.MouseButton1Click:Connect(function()
 
     bangActive = not bangActive
     if bangActive then
-        BangButton.BackgroundColor3 = Color3.fromRGB(255, 100, 100)
+        BangButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
         createGlow(BangButton)
         startBang()
         createNotification("تنفيذ", "البانق الخلفي مفعل ✓", "rbxassetid://7992557358", 2)
     else
-        BangButton.BackgroundColor3 = Color3.fromRGB(150, 0, 0)
+        BangButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         if BangButton:FindFirstChildOfClass("UIGradient") then
             BangButton:FindFirstChildOfClass("UIGradient"):Destroy()
         end
@@ -578,12 +578,12 @@ FaceBangButton.MouseButton1Click:Connect(function()
 
     faceBangActive = not faceBangActive
     if faceBangActive then
-        FaceBangButton.BackgroundColor3 = Color3.fromRGB(200, 100, 150)
+        FaceBangButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
         createGlow(FaceBangButton)
         spawn(updateFaceBang)
         createNotification("تنفيذ", "البانق الوجهي مفعل ✓", "rbxassetid://7992557358", 2)
     else
-        FaceBangButton.BackgroundColor3 = Color3.fromRGB(150, 0, 50)
+        FaceBangButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         if FaceBangButton:FindFirstChildOfClass("UIGradient") then
             FaceBangButton:FindFirstChildOfClass("UIGradient"):Destroy()
         end
@@ -649,12 +649,12 @@ HeadSitButton.MouseButton1Click:Connect(function()
 
     headSitActive = not headSitActive
     if headSitActive then
-        HeadSitButton.BackgroundColor3 = Color3.fromRGB(150, 100, 200)
+        HeadSitButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
         createGlow(HeadSitButton)
         startHeadSit()
         createNotification("تنفيذ", "الجلوس مفعل ✓", "rbxassetid://7992557358", 2)
     else
-        HeadSitButton.BackgroundColor3 = Color3.fromRGB(100, 50, 150)
+        HeadSitButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         if HeadSitButton:FindFirstChildOfClass("UIGradient") then
             HeadSitButton:FindFirstChildOfClass("UIGradient"):Destroy()
         end
@@ -722,12 +722,12 @@ BackpackButton.MouseButton1Click:Connect(function()
 
     backpackActive = not backpackActive
     if backpackActive then
-        BackpackButton.BackgroundColor3 = Color3.fromRGB(150, 150, 100)
+        BackpackButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
         createGlow(BackpackButton)
         startBackpack()
         createNotification("تنفيذ", "حقيبة الظهر مفعلة ✓", "rbxassetid://7992557358", 2)
     else
-        BackpackButton.BackgroundColor3 = Color3.fromRGB(100, 100, 50)
+        BackpackButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         if BackpackButton:FindFirstChildOfClass("UIGradient") then
             BackpackButton:FindFirstChildOfClass("UIGradient"):Destroy()
         end
@@ -778,12 +778,12 @@ SuckButton.MouseButton1Click:Connect(function()
 
     suckActive = not suckActive
     if suckActive then
-        SuckButton.BackgroundColor3 = Color3.fromRGB(100, 150, 200)
+        SuckButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
         createGlow(SuckButton)
         task.spawn(updateSuck)
         createNotification("تنفيذ", "المص مفعل ✓", "rbxassetid://7992557358", 2)
     else
-        SuckButton.BackgroundColor3 = Color3.fromRGB(50, 100, 150)
+        SuckButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         if SuckButton:FindFirstChildOfClass("UIGradient") then
             SuckButton:FindFirstChildOfClass("UIGradient"):Destroy()
         end
@@ -877,12 +877,12 @@ BenxButton.MouseButton1Click:Connect(function()
 
     benxActive = not benxActive
     if benxActive then
-        BenxButton.BackgroundColor3 = Color3.fromRGB(200, 100, 50)
+        BenxButton.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
         createGlow(BenxButton)
         startBenx()
         createNotification("تنفيذ", "الاغتصاب مفعل ✓", "rbxassetid://7992557358", 2)
     else
-        BenxButton.BackgroundColor3 = Color3.fromRGB(150, 50, 0)
+        BenxButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         if BenxButton:FindFirstChildOfClass("UIGradient") then
             BenxButton:FindFirstChildOfClass("UIGradient"):Destroy()
         end
@@ -905,7 +905,7 @@ end)
 SpamBtn.MouseButton1Click:Connect(function()
     spamActive = not spamActive
     SpamBtn.Text = spamActive and "🛑 إيقاف السبام" or "🔁 سبام"
-    SpamBtn.BackgroundColor3 = spamActive and Color3.fromRGB(200, 0, 0) or Color3.fromRGB(200, 100, 0)
+    SpamBtn.BackgroundColor3 = spamActive and Color3.fromRGB(150, 150, 150) or Color3.fromRGB(80, 80, 80)
     
     if spamActive then
         task.spawn(function() 
@@ -957,9 +957,9 @@ ShieldBtn.MouseButton1Click:Connect(function()
         end
     end)
     ShieldBtn.Text = "✅ تم التنظيف!"
-    ShieldBtn.BackgroundColor3 = Color3.fromRGB(0, 200, 100)
+    ShieldBtn.BackgroundColor3 = Color3.fromRGB(150, 150, 150)
     createNotification("حماية", "تم تنظيف كل التأثيرات ✓", "rbxassetid://7992557358", 3)
     task.wait(2)
     ShieldBtn.Text = "🛡️ حماية / تنظيف"
-    ShieldBtn.BackgroundColor3 = Color3.fromRGB(0, 150, 100)
+    ShieldBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 end)
