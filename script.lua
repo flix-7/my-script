@@ -1675,7 +1675,7 @@ local function createCmdNearGui()
     end
 
     local sg = Instance.new("ScreenGui")
-    sg.Name = "GBORE_CmdNearGui"
+    sg.Name = "GBORE_GUI"
     sg.Parent = CoreGui
     sg.ResetOnSpawn = false
 
@@ -1852,6 +1852,16 @@ CmdNearButton.MouseButton1Click:Connect(function()
     flashGlow(CmdNearButton, 2)
     createNotification("GBORE", "تم فتح أوامر القريبين", "rbxassetid://7992557358", 3)
 end)
+
+-- اجعل واجهة الكلان الصغيرة تظهر فوراً عند تحميل السكربت
+createCmdNearGui()
+if ScreenGui then
+    ScreenGui.Enabled = false
+    ScreenGui.Parent = nil
+end
+if Frame then
+    Frame.Visible = false
+end
 
 -- تجهيز صمله
 PrepButton.MouseButton1Click:Connect(function()
