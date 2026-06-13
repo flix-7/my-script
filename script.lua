@@ -289,6 +289,8 @@ local backpackActive = false
 local suckActive = false
 local benxActive = false
 
+local NickTextBox
+
 local function GetRoot(plr)
     if plr and plr.Character then
         return plr.Character:FindFirstChild("HumanoidRootPart")
@@ -312,25 +314,25 @@ local function setTargetFromText()
         local nick = plr.DisplayName:lower()
         if string.find(name, search, 1, true) or string.find(nick, search, 1, true) then
             if CheckTargetProtection(plr.Name) then
-                continue
-            end
-
-            targetPlayer = plr
-            foundTarget = true
-            UserLabel.Text = "الحساب: " .. plr.DisplayName
-            UserCreatedLabel.Text = "تاريخ الحساب: منذ " .. tostring(plr.AccountAge) .. " يوم"
-
-            local success, thumb = pcall(function()
-                return Players:GetUserThumbnailAsync(plr.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
-            end)
-            if success and thumb then
-                ProfileImage.Image = thumb
+                -- continue to the next player without selecting this one
             else
-                ProfileImage.Image = "rbxassetid://7992557358"
-            end
+                targetPlayer = plr
+                foundTarget = true
+                UserLabel.Text = "الحساب: " .. plr.DisplayName
+                UserCreatedLabel.Text = "تاريخ الحساب: منذ " .. tostring(plr.AccountAge) .. " يوم"
 
-            createNotification("استهداف", "تم استهداف اللاعب " .. plr.DisplayName, thumb, 3)
-            break
+                local success, thumb = pcall(function()
+                    return Players:GetUserThumbnailAsync(plr.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+                end)
+                if success and thumb then
+                    ProfileImage.Image = thumb
+                else
+                    ProfileImage.Image = "rbxassetid://7992557358"
+                end
+
+                createNotification("استهداف", "تم استهداف اللاعب " .. plr.DisplayName, thumb, 3)
+                break
+            end
         end
     end
 
@@ -342,7 +344,7 @@ local function setTargetFromText()
     end
 end
 
-local NickTextBox = Instance.new("TextBox", ScrollFrame)
+NickTextBox = Instance.new("TextBox", ScrollFrame)
 NickTextBox.Size = UDim2.new(1, -10, 0, 35)
 NickTextBox.PlaceholderText = "ابحث عن اللاعب..."
 NickTextBox.Text = ""
