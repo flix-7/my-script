@@ -26,7 +26,7 @@ local BannedUsers = {}
 -- ===========================================
 -- دالة الإشعارات
 -- ===========================================
-local function createNotification(titleText, mainText, playerImageId, duration)
+local function createNotification(titleText, mainText, playerImageId, duration)ب
     duration = duration or 5
     
     local notificationScreen = CoreGui:FindFirstChild("GBORE_Notifications")
@@ -233,12 +233,63 @@ UIListLayout.Padding = UDim.new(0, 10)
 UIListLayout.FillDirection = Enum.FillDirection.Vertical
 
 -- ============================
+-- قسم معلومات الهدف
+-- ============================
+local TargetInfoLabel = Instance.new("TextLabel", ScrollFrame)
+TargetInfoLabel.Size = UDim2.new(1, -10, 0, 25)
+TargetInfoLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+TargetInfoLabel.Text = "معلومات الهدف"
+TargetInfoLabel.Font = Enum.Font.GothamBold
+TargetInfoLabel.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", TargetInfoLabel).CornerRadius = UDim.new(0, 8)
+
+local InfoFrame = Instance.new("Frame", ScrollFrame)
+InfoFrame.Size = UDim2.new(1, -10, 0, 90)
+InfoFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+InfoFrame.BorderSizePixel = 0
+Instance.new("UICorner", InfoFrame).CornerRadius = UDim.new(0, 8)
+
+local TargetImage = Instance.new("ImageLabel", InfoFrame)
+TargetImage.Size = UDim2.new(0, 70, 0, 70)
+TargetImage.Position = UDim2.new(0, 10, 0, 10)
+TargetImage.BackgroundTransparency = 1
+TargetImage.Image = "rbxassetid://7992557358"
+Instance.new("UICorner", TargetImage).CornerRadius = UDim.new(1, 0)
+
+local TargetInfoText = Instance.new("TextLabel", InfoFrame)
+TargetInfoText.Size = UDim2.new(1, -90, 1, -20)
+TargetInfoText.Position = UDim2.new(0, 80, 0, 10)
+TargetInfoText.BackgroundTransparency = 1
+TargetInfoText.Text = "اسم الهدف: غير محدد\nاسم المستخدم: -\nمدة الحساب: - يوم"
+TargetInfoText.Font = Enum.Font.Gotham
+TargetInfoText.TextSize = 14
+TargetInfoText.TextColor3 = Color3.new(1, 1, 1)
+TargetInfoText.TextXAlignment = Enum.TextXAlignment.Left
+TargetInfoText.TextYAlignment = Enum.TextYAlignment.Top
+TargetInfoText.TextWrapped = true
+
+local NickTextBox = Instance.new("TextBox", ScrollFrame)
+NickTextBox.Size = UDim2.new(1, -10, 0, 35)
+NickTextBox.PlaceholderText = "ابحث عن اللاعب..."
+NickTextBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+NickTextBox.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", NickTextBox).CornerRadius = UDim.new(0, 8)
+
+local UserLabel = Instance.new("TextLabel", ScrollFrame)
+UserLabel.Size = UDim2.new(1, -10, 0, 25)
+UserLabel.Text = "الحساب: غير محدد"
+UserLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+UserLabel.TextColor3 = Color3.fromRGB(100, 200, 255)
+UserLabel.Font = Enum.Font.GothamBold
+Instance.new("UICorner", UserLabel).CornerRadius = UDim.new(0, 8)
+
+-- ============================
 -- قسم الأوامر
 -- ============================
 local CmdLabel = Instance.new("TextLabel", ScrollFrame)
 CmdLabel.Size = UDim2.new(1, -10, 0, 25)
 CmdLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-CmdLabel.Text = "الأوامر والحماية"
+CmdLabel.Text = "الأمر"
 CmdLabel.Font = Enum.Font.GothamBold
 CmdLabel.TextColor3 = Color3.new(1, 1, 1)
 Instance.new("UICorner", CmdLabel).CornerRadius = UDim.new(0, 8)
@@ -250,6 +301,17 @@ CmdBox.Text = "/nv"
 CmdBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 CmdBox.TextColor3 = Color3.new(1, 1, 1)
 Instance.new("UICorner", CmdBox).CornerRadius = UDim.new(0, 8)
+
+-- ============================
+-- قسم سرعة السبام
+-- ============================
+local SpeedLabel = Instance.new("TextLabel", ScrollFrame)
+SpeedLabel.Size = UDim2.new(1, -10, 0, 25)
+SpeedLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+SpeedLabel.Text = "سرعة السبام"
+SpeedLabel.Font = Enum.Font.GothamBold
+SpeedLabel.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", SpeedLabel).CornerRadius = UDim.new(0, 8)
 
 local SpeedBox = Instance.new("TextBox", ScrollFrame)
 SpeedBox.Size = UDim2.new(1, -10, 0, 35)
@@ -274,48 +336,6 @@ SpamBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 SpamBtn.TextColor3 = Color3.new(1, 1, 1)
 SpamBtn.Font = Enum.Font.GothamBold
 Instance.new("UICorner", SpamBtn).CornerRadius = UDim.new(0, 8)
-
-local BatchBtn = Instance.new("TextButton", ScrollFrame)
-BatchBtn.Size = UDim2.new(1, -10, 0, 35)
-BatchBtn.Text = "تخريب جماعي"
-BatchBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
-BatchBtn.TextColor3 = Color3.new(1, 1, 1)
-BatchBtn.Font = Enum.Font.GothamBold
-Instance.new("UICorner", BatchBtn).CornerRadius = UDim.new(0, 8)
-
-local ShieldBtn = Instance.new("TextButton", ScrollFrame)
-ShieldBtn.Size = UDim2.new(1, -10, 0, 35)
-ShieldBtn.Text = "حماية / تنظيف"
-ShieldBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
-ShieldBtn.TextColor3 = Color3.new(1, 1, 1)
-ShieldBtn.Font = Enum.Font.GothamBold
-Instance.new("UICorner", ShieldBtn).CornerRadius = UDim.new(0, 8)
-
--- ============================
--- قسم الاستهداف
--- ============================
-local TargetLabel = Instance.new("TextLabel", ScrollFrame)
-TargetLabel.Size = UDim2.new(1, -10, 0, 25)
-TargetLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-TargetLabel.Text = "نظام الاستهداف"
-TargetLabel.Font = Enum.Font.GothamBold
-TargetLabel.TextColor3 = Color3.new(1, 1, 1)
-Instance.new("UICorner", TargetLabel).CornerRadius = UDim.new(0, 8)
-
-local NickTextBox = Instance.new("TextBox", ScrollFrame)
-NickTextBox.Size = UDim2.new(1, -10, 0, 35)
-NickTextBox.PlaceholderText = "ابحث عن اللاعب..."
-NickTextBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-NickTextBox.TextColor3 = Color3.new(1, 1, 1)
-Instance.new("UICorner", NickTextBox).CornerRadius = UDim.new(0, 8)
-
-local UserLabel = Instance.new("TextLabel", ScrollFrame)
-UserLabel.Size = UDim2.new(1, -10, 0, 25)
-UserLabel.Text = "الحساب: غير محدد"
-UserLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-UserLabel.TextColor3 = Color3.fromRGB(100, 200, 255)
-UserLabel.Font = Enum.Font.GothamBold
-Instance.new("UICorner", UserLabel).CornerRadius = UDim.new(0, 8)
 
 -- ============================
 -- قسم الحركات
