@@ -253,6 +253,19 @@ ProfileFrame.BorderSizePixel = 0
 ProfileFrame.LayoutOrder = 2
 Instance.new("UICorner", ProfileFrame).CornerRadius = UDim.new(0, 8)
 
+-- ============================
+-- قسم البحث والأوامر
+-- ============================
+local SearchLabel = Instance.new("TextLabel", ScrollFrame)
+SearchLabel.Size = UDim2.new(1, -10, 0, 25)
+SearchLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+SearchLabel.Text = "قسم البحث والأوامر"
+SearchLabel.Font = Enum.Font.GothamBold
+SearchLabel.TextColor3 = Color3.new(1, 1, 1)
+SearchLabel.TextXAlignment = Enum.TextXAlignment.Center
+SearchLabel.LayoutOrder = 3
+Instance.new("UICorner", SearchLabel).CornerRadius = UDim.new(0, 8)
+
 local ProfileImage = Instance.new("ImageLabel", ProfileFrame)
 ProfileImage.Size = UDim2.new(0, 70, 0, 70)
 ProfileImage.Position = UDim2.new(0, 10, 0, 15)
@@ -350,7 +363,7 @@ NickTextBox.PlaceholderText = "ابحث عن اللاعب..."
 NickTextBox.Text = ""
 NickTextBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 NickTextBox.TextColor3 = Color3.new(1, 1, 1)
-NickTextBox.LayoutOrder = 3
+NickTextBox.LayoutOrder = 4
 Instance.new("UICorner", NickTextBox).CornerRadius = UDim.new(0, 8)
 NickTextBox:GetPropertyChangedSignal("Text"):Connect(setTargetFromText)
 NickTextBox.FocusLost:Connect(function(enterPressed)
@@ -365,7 +378,7 @@ CmdBox.PlaceholderText = "اكتب الأمر هنا"
 CmdBox.Text = "/nv"
 CmdBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 CmdBox.TextColor3 = Color3.new(1, 1, 1)
-CmdBox.LayoutOrder = 4
+CmdBox.LayoutOrder = 5
 Instance.new("UICorner", CmdBox).CornerRadius = UDim.new(0, 8)
 
 local SpeedBox = Instance.new("TextBox", ScrollFrame)
@@ -374,7 +387,7 @@ SpeedBox.PlaceholderText = "سرعة السبام (مثال: 0.2)"
 SpeedBox.Text = "0.2"
 SpeedBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 SpeedBox.TextColor3 = Color3.new(1, 1, 1)
-SpeedBox.LayoutOrder = 5
+SpeedBox.LayoutOrder = 6
 Instance.new("UICorner", SpeedBox).CornerRadius = UDim.new(0, 8)
 
 local SendBtn = Instance.new("TextButton", ScrollFrame)
@@ -383,7 +396,7 @@ SendBtn.Text = "ارسال مره واحده"
 SendBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 SendBtn.TextColor3 = Color3.new(1, 1, 1)
 SendBtn.Font = Enum.Font.GothamBold
-SendBtn.LayoutOrder = 6
+SendBtn.LayoutOrder = 7
 Instance.new("UICorner", SendBtn).CornerRadius = UDim.new(0, 8)
 
 local SpamBtn = Instance.new("TextButton", ScrollFrame)
@@ -392,21 +405,8 @@ SpamBtn.Text = "سبام"
 SpamBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 SpamBtn.TextColor3 = Color3.new(1, 1, 1)
 SpamBtn.Font = Enum.Font.GothamBold
-SpamBtn.LayoutOrder = 7
+SpamBtn.LayoutOrder = 8
 Instance.new("UICorner", SpamBtn).CornerRadius = UDim.new(0, 8)
-
--- ============================
--- قسم البحث والأوامر
--- ============================
-local SearchLabel = Instance.new("TextLabel", ScrollFrame)
-SearchLabel.Size = UDim2.new(1, -10, 0, 25)
-SearchLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-SearchLabel.Text = "قسم البحث والأوامر"
-SearchLabel.Font = Enum.Font.GothamBold
-SearchLabel.TextColor3 = Color3.new(1, 1, 1)
-SearchLabel.TextXAlignment = Enum.TextXAlignment.Center
-SearchLabel.LayoutOrder = 8
-Instance.new("UICorner", SearchLabel).CornerRadius = UDim.new(0, 8)
 
 -- ============================
 -- قسم الحركات
