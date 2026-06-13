@@ -408,7 +408,7 @@ Instance.new("UICorner", ActionsLabel).CornerRadius = UDim.new(0, 8)
 
 local FaceBangButton = Instance.new("TextButton", ScrollFrame)
 FaceBangButton.Size = UDim2.new(1, -10, 0, 35)
-FaceBangButton.Text = "وضعية1"
+FaceBangButton.Text = "بانق وجهي"
 FaceBangButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 FaceBangButton.TextColor3 = Color3.new(1, 1, 1)
 FaceBangButton.Font = Enum.Font.GothamBold
@@ -417,7 +417,7 @@ Instance.new("UICorner", FaceBangButton).CornerRadius = UDim.new(0, 8)
 
 local SuckButton = Instance.new("TextButton", ScrollFrame)
 SuckButton.Size = UDim2.new(1, -10, 0, 35)
-SuckButton.Text = "وضعية2"
+SuckButton.Text = "مص"
 SuckButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 SuckButton.TextColor3 = Color3.new(1, 1, 1)
 SuckButton.Font = Enum.Font.GothamBold
@@ -426,7 +426,7 @@ Instance.new("UICorner", SuckButton).CornerRadius = UDim.new(0, 8)
 
 local BenxButton = Instance.new("TextButton", ScrollFrame)
 BenxButton.Size = UDim2.new(1, -10, 0, 35)
-BenxButton.Text = "وضعية3"
+BenxButton.Text = "اغتصاب"
 BenxButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 BenxButton.TextColor3 = Color3.new(1, 1, 1)
 BenxButton.Font = Enum.Font.GothamBold
@@ -876,7 +876,7 @@ BackpackButton.MouseButton1Click:Connect(function()
 end)
 
 -- ============================
--- الوضعية2
+-- المص
 -- ============================
 local suckHeartbeat = nil
 local currentDistance2 = 1.5
@@ -920,19 +920,19 @@ SuckButton.MouseButton1Click:Connect(function()
         SuckButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         createGlow(SuckButton)
         task.spawn(updateSuck)
-        createNotification("تنفيذ", "الوضعية2 مفعل ✓", "rbxassetid://7992557358", 2)
+        createNotification("تنفيذ", "المص مفعل ✓", "rbxassetid://7992557358", 2)
     else
         SuckButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         if SuckButton:FindFirstChildOfClass("UIGradient") then
             SuckButton:FindFirstChildOfClass("UIGradient"):Destroy()
         end
         suckActive = false
-        createNotification("إيقاف", "الوضعية2 معطل", "rbxassetid://7992557358", 2)
+        createNotification("إيقاف", "المص معطل", "rbxassetid://7992557358", 2)
     end
 end)
 
 -- ============================
--- الوضعية3
+-- الاغتصاب
 -- ============================
 local benxHeartbeat = nil
 getgenv().Benx = false
@@ -1019,14 +1019,14 @@ BenxButton.MouseButton1Click:Connect(function()
         BenxButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         createGlow(BenxButton)
         startBenx()
-        createNotification("تنفيذ", "الوضعية3 مفعل ✓", "rbxassetid://7992557358", 2)
+        createNotification("تنفيذ", "الاغتصاب مفعل ✓", "rbxassetid://7992557358", 2)
     else
         BenxButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         if BenxButton:FindFirstChildOfClass("UIGradient") then
             BenxButton:FindFirstChildOfClass("UIGradient"):Destroy()
         end
         stopBenx()
-        createNotification("إيقاف", "الوضعية3 معطل", "rbxassetid://7992557358", 2)
+        createNotification("إيقاف", "الاغتصاب معطل", "rbxassetid://7992557358", 2)
     end
 end)
 
