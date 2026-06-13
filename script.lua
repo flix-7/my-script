@@ -242,12 +242,15 @@ UserInfoLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 UserInfoLabel.Text = "معلومات الهدف"
 UserInfoLabel.Font = Enum.Font.GothamBold
 UserInfoLabel.TextColor3 = Color3.new(1, 1, 1)
+UserInfoLabel.TextXAlignment = Enum.TextXAlignment.Center
+UserInfoLabel.LayoutOrder = 1
 Instance.new("UICorner", UserInfoLabel).CornerRadius = UDim.new(0, 8)
 
 local ProfileFrame = Instance.new("Frame", ScrollFrame)
 ProfileFrame.Size = UDim2.new(1, -10, 0, 100)
 ProfileFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 ProfileFrame.BorderSizePixel = 0
+ProfileFrame.LayoutOrder = 2
 Instance.new("UICorner", ProfileFrame).CornerRadius = UDim.new(0, 8)
 
 local ProfileImage = Instance.new("ImageLabel", ProfileFrame)
@@ -284,6 +287,7 @@ NickTextBox.PlaceholderText = "ابحث عن اللاعب..."
 NickTextBox.Text = ""
 NickTextBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 NickTextBox.TextColor3 = Color3.new(1, 1, 1)
+NickTextBox.LayoutOrder = 3
 Instance.new("UICorner", NickTextBox).CornerRadius = UDim.new(0, 8)
 
 local CmdBox = Instance.new("TextBox", ScrollFrame)
@@ -292,6 +296,7 @@ CmdBox.PlaceholderText = "اكتب الأمر هنا"
 CmdBox.Text = "/nv"
 CmdBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 CmdBox.TextColor3 = Color3.new(1, 1, 1)
+CmdBox.LayoutOrder = 4
 Instance.new("UICorner", CmdBox).CornerRadius = UDim.new(0, 8)
 
 local SpeedBox = Instance.new("TextBox", ScrollFrame)
@@ -300,6 +305,7 @@ SpeedBox.PlaceholderText = "سرعة السبام (مثال: 0.2)"
 SpeedBox.Text = "0.2"
 SpeedBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 SpeedBox.TextColor3 = Color3.new(1, 1, 1)
+SpeedBox.LayoutOrder = 5
 Instance.new("UICorner", SpeedBox).CornerRadius = UDim.new(0, 8)
 
 local SendBtn = Instance.new("TextButton", ScrollFrame)
@@ -308,6 +314,7 @@ SendBtn.Text = "ارسال مره واحده"
 SendBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 SendBtn.TextColor3 = Color3.new(1, 1, 1)
 SendBtn.Font = Enum.Font.GothamBold
+SendBtn.LayoutOrder = 6
 Instance.new("UICorner", SendBtn).CornerRadius = UDim.new(0, 8)
 
 local SpamBtn = Instance.new("TextButton", ScrollFrame)
@@ -316,6 +323,7 @@ SpamBtn.Text = "سبام"
 SpamBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 SpamBtn.TextColor3 = Color3.new(1, 1, 1)
 SpamBtn.Font = Enum.Font.GothamBold
+SpamBtn.LayoutOrder = 7
 Instance.new("UICorner", SpamBtn).CornerRadius = UDim.new(0, 8)
 
 -- ============================
@@ -327,6 +335,8 @@ ActionsLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 ActionsLabel.Text = "قسم الحركات"
 ActionsLabel.Font = Enum.Font.GothamBold
 ActionsLabel.TextColor3 = Color3.new(1, 1, 1)
+ActionsLabel.TextXAlignment = Enum.TextXAlignment.Center
+ActionsLabel.LayoutOrder = 8
 Instance.new("UICorner", ActionsLabel).CornerRadius = UDim.new(0, 8)
 
 local FaceBangButton = Instance.new("TextButton", ScrollFrame)
@@ -335,6 +345,7 @@ FaceBangButton.Text = "وضعية1"
 FaceBangButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 FaceBangButton.TextColor3 = Color3.new(1, 1, 1)
 FaceBangButton.Font = Enum.Font.GothamBold
+FaceBangButton.LayoutOrder = 9
 Instance.new("UICorner", FaceBangButton).CornerRadius = UDim.new(0, 8)
 
 local SuckButton = Instance.new("TextButton", ScrollFrame)
@@ -343,6 +354,7 @@ SuckButton.Text = "وضعية2"
 SuckButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 SuckButton.TextColor3 = Color3.new(1, 1, 1)
 SuckButton.Font = Enum.Font.GothamBold
+SuckButton.LayoutOrder = 10
 Instance.new("UICorner", SuckButton).CornerRadius = UDim.new(0, 8)
 
 local BenxButton = Instance.new("TextButton", ScrollFrame)
@@ -351,6 +363,7 @@ BenxButton.Text = "وضعية3"
 BenxButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 BenxButton.TextColor3 = Color3.new(1, 1, 1)
 BenxButton.Font = Enum.Font.GothamBold
+BenxButton.LayoutOrder = 11
 Instance.new("UICorner", BenxButton).CornerRadius = UDim.new(0, 8)
 
 local HeadSitButton = Instance.new("TextButton", ScrollFrame)
@@ -359,6 +372,7 @@ HeadSitButton.Text = "جلوس فوق الرأس"
 HeadSitButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 HeadSitButton.TextColor3 = Color3.new(1, 1, 1)
 HeadSitButton.Font = Enum.Font.GothamBold
+HeadSitButton.LayoutOrder = 12
 Instance.new("UICorner", HeadSitButton).CornerRadius = UDim.new(0, 8)
 
 local BackpackButton = Instance.new("TextButton", ScrollFrame)
@@ -367,6 +381,7 @@ BackpackButton.Text = "حقيبة ظهر"
 BackpackButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 BackpackButton.TextColor3 = Color3.new(1, 1, 1)
 BackpackButton.Font = Enum.Font.GothamBold
+BackpackButton.LayoutOrder = 13
 Instance.new("UICorner", BackpackButton).CornerRadius = UDim.new(0, 8)
 
 -- ============================
@@ -378,6 +393,8 @@ ExtraLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
 ExtraLabel.Text = "خيارات إضافية"
 ExtraLabel.Font = Enum.Font.GothamBold
 ExtraLabel.TextColor3 = Color3.new(1, 1, 1)
+ExtraLabel.TextXAlignment = Enum.TextXAlignment.Center
+ExtraLabel.LayoutOrder = 14
 Instance.new("UICorner", ExtraLabel).CornerRadius = UDim.new(0, 8)
 
 local WatchButton = Instance.new("TextButton", ScrollFrame)
@@ -386,6 +403,7 @@ WatchButton.Text = "مشاهدة"
 WatchButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 WatchButton.TextColor3 = Color3.new(1, 1, 1)
 WatchButton.Font = Enum.Font.GothamBold
+WatchButton.LayoutOrder = 15
 Instance.new("UICorner", WatchButton).CornerRadius = UDim.new(0, 8)
 
 local BangButton = Instance.new("TextButton", ScrollFrame)
@@ -394,6 +412,7 @@ BangButton.Text = "نيك خلفي"
 BangButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 BangButton.TextColor3 = Color3.new(1, 1, 1)
 BangButton.Font = Enum.Font.GothamBold
+BangButton.LayoutOrder = 16
 Instance.new("UICorner", BangButton).CornerRadius = UDim.new(0, 8)
 
 local BatchBtn = Instance.new("TextButton", ScrollFrame)
@@ -402,6 +421,7 @@ BatchBtn.Text = "تخريب جماعي"
 BatchBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 BatchBtn.TextColor3 = Color3.new(1, 1, 1)
 BatchBtn.Font = Enum.Font.GothamBold
+BatchBtn.LayoutOrder = 17
 Instance.new("UICorner", BatchBtn).CornerRadius = UDim.new(0, 8)
 
 local ShieldBtn = Instance.new("TextButton", ScrollFrame)
@@ -410,6 +430,7 @@ ShieldBtn.Text = "حماية / تنظيف"
 ShieldBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 ShieldBtn.TextColor3 = Color3.new(1, 1, 1)
 ShieldBtn.Font = Enum.Font.GothamBold
+ShieldBtn.LayoutOrder = 18
 Instance.new("UICorner", ShieldBtn).CornerRadius = UDim.new(0, 8)
 
 local watchActive = false
