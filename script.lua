@@ -253,19 +253,6 @@ ProfileFrame.BorderSizePixel = 0
 ProfileFrame.LayoutOrder = 2
 Instance.new("UICorner", ProfileFrame).CornerRadius = UDim.new(0, 8)
 
--- ============================
--- قسم البحث والأوامر
--- ============================
-local SearchLabel = Instance.new("TextLabel", ScrollFrame)
-SearchLabel.Size = UDim2.new(1, -10, 0, 25)
-SearchLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-SearchLabel.Text = "قسم البحث والأوامر"
-SearchLabel.Font = Enum.Font.GothamBold
-SearchLabel.TextColor3 = Color3.new(1, 1, 1)
-SearchLabel.TextXAlignment = Enum.TextXAlignment.Center
-SearchLabel.LayoutOrder = 3
-Instance.new("UICorner", SearchLabel).CornerRadius = UDim.new(0, 8)
-
 local ProfileImage = Instance.new("ImageLabel", ProfileFrame)
 ProfileImage.Size = UDim2.new(0, 70, 0, 70)
 ProfileImage.Position = UDim2.new(0, 10, 0, 15)
@@ -357,6 +344,19 @@ local function setTargetFromText()
     end
 end
 
+-- ============================
+-- ✏️ قسم البحث والأوامر
+-- ============================
+local CommandsHeader = Instance.new("TextLabel", ScrollFrame)
+CommandsHeader.Size = UDim2.new(1, -10, 0, 25)
+CommandsHeader.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+CommandsHeader.Text = "✏️ قسم البحث والأوامر"
+CommandsHeader.Font = Enum.Font.GothamBold
+CommandsHeader.TextColor3 = Color3.new(1, 1, 1)
+CommandsHeader.TextXAlignment = Enum.TextXAlignment.Center
+CommandsHeader.LayoutOrder = 3
+Instance.new("UICorner", CommandsHeader).CornerRadius = UDim.new(0, 8)
+
 NickTextBox = Instance.new("TextBox", ScrollFrame)
 NickTextBox.Size = UDim2.new(1, -10, 0, 35)
 NickTextBox.PlaceholderText = "ابحث عن اللاعب..."
@@ -409,17 +409,17 @@ SpamBtn.LayoutOrder = 8
 Instance.new("UICorner", SpamBtn).CornerRadius = UDim.new(0, 8)
 
 -- ============================
--- قسم الحركات
+-- 🔘 قسم الحركات
 -- ============================
-local ActionsLabel = Instance.new("TextLabel", ScrollFrame)
-ActionsLabel.Size = UDim2.new(1, -10, 0, 25)
-ActionsLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-ActionsLabel.Text = "قسم الحركات"
-ActionsLabel.Font = Enum.Font.GothamBold
-ActionsLabel.TextColor3 = Color3.new(1, 1, 1)
-ActionsLabel.TextXAlignment = Enum.TextXAlignment.Center
-ActionsLabel.LayoutOrder = 9
-Instance.new("UICorner", ActionsLabel).CornerRadius = UDim.new(0, 8)
+local MovementsHeader = Instance.new("TextLabel", ScrollFrame)
+MovementsHeader.Size = UDim2.new(1, -10, 0, 25)
+MovementsHeader.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+MovementsHeader.Text = "🔘 قسم الحركات"
+MovementsHeader.Font = Enum.Font.GothamBold
+MovementsHeader.TextColor3 = Color3.new(1, 1, 1)
+MovementsHeader.TextXAlignment = Enum.TextXAlignment.Center
+MovementsHeader.LayoutOrder = 9
+Instance.new("UICorner", MovementsHeader).CornerRadius = UDim.new(0, 8)
 
 local FaceBangButton = Instance.new("TextButton", ScrollFrame)
 FaceBangButton.Size = UDim2.new(1, -10, 0, 35)
@@ -476,17 +476,17 @@ BangButton.LayoutOrder = 15
 Instance.new("UICorner", BangButton).CornerRadius = UDim.new(0, 8)
 
 -- ============================
--- خيارات إضافية
+-- 🔘 خيارات إضافية
 -- ============================
-local ExtraLabel = Instance.new("TextLabel", ScrollFrame)
-ExtraLabel.Size = UDim2.new(1, -10, 0, 25)
-ExtraLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-ExtraLabel.Text = "خيارات إضافية"
-ExtraLabel.Font = Enum.Font.GothamBold
-ExtraLabel.TextColor3 = Color3.new(1, 1, 1)
-ExtraLabel.TextXAlignment = Enum.TextXAlignment.Center
-ExtraLabel.LayoutOrder = 16
-Instance.new("UICorner", ExtraLabel).CornerRadius = UDim.new(0, 8)
+local OptionsHeader = Instance.new("TextLabel", ScrollFrame)
+OptionsHeader.Size = UDim2.new(1, -10, 0, 25)
+OptionsHeader.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+OptionsHeader.Text = "🔘 خيارات إضافية"
+OptionsHeader.Font = Enum.Font.GothamBold
+OptionsHeader.TextColor3 = Color3.new(1, 1, 1)
+OptionsHeader.TextXAlignment = Enum.TextXAlignment.Center
+OptionsHeader.LayoutOrder = 16
+Instance.new("UICorner", OptionsHeader).CornerRadius = UDim.new(0, 8)
 
 local WatchButton = Instance.new("TextButton", ScrollFrame)
 WatchButton.Size = UDim2.new(1, -10, 0, 35)
