@@ -26,7 +26,7 @@ local BannedUsers = {}
 -- ===========================================
 -- دالة الإشعارات
 -- ===========================================
-local function createNotification(titleText, mainText, playerImageId, duration)ب
+local function createNotification(titleText, mainText, playerImageId, duration)
     duration = duration or 5
     
     local notificationScreen = CoreGui:FindFirstChild("GBORE_Notifications")
@@ -183,7 +183,7 @@ Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0, 10)
 -- العنوان
 local Title = Instance.new("TextLabel", MainFrame)
 Title.Size = UDim2.new(1, 0, 0, 40)
-Title.Text = "RK KLAN"
+Title.Text = "الله"
 Title.Font = Enum.Font.GothamBold
 Title.BackgroundTransparency = 1
 Title.TextColor3 = Color3.new(1, 1, 1)
@@ -233,85 +233,65 @@ UIListLayout.Padding = UDim.new(0, 10)
 UIListLayout.FillDirection = Enum.FillDirection.Vertical
 
 -- ============================
--- قسم معلومات الهدف
+-- قسم معلومات المستخدم والأوامر
 -- ============================
-local TargetInfoLabel = Instance.new("TextLabel", ScrollFrame)
-TargetInfoLabel.Size = UDim2.new(1, -10, 0, 25)
-TargetInfoLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-TargetInfoLabel.Text = "معلومات الهدف"
-TargetInfoLabel.Font = Enum.Font.GothamBold
-TargetInfoLabel.TextColor3 = Color3.new(1, 1, 1)
-Instance.new("UICorner", TargetInfoLabel).CornerRadius = UDim.new(0, 8)
+local UserInfoLabel = Instance.new("TextLabel", ScrollFrame)
+UserInfoLabel.Size = UDim2.new(1, -10, 0, 25)
+UserInfoLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+UserInfoLabel.Text = "معلومات الهدف"
+UserInfoLabel.Font = Enum.Font.GothamBold
+UserInfoLabel.TextColor3 = Color3.new(1, 1, 1)
+Instance.new("UICorner", UserInfoLabel).CornerRadius = UDim.new(0, 8)
 
-local InfoFrame = Instance.new("Frame", ScrollFrame)
-InfoFrame.Size = UDim2.new(1, -10, 0, 90)
-InfoFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-InfoFrame.BorderSizePixel = 0
-Instance.new("UICorner", InfoFrame).CornerRadius = UDim.new(0, 8)
+local ProfileFrame = Instance.new("Frame", ScrollFrame)
+ProfileFrame.Size = UDim2.new(1, -10, 0, 100)
+ProfileFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+ProfileFrame.BorderSizePixel = 0
+Instance.new("UICorner", ProfileFrame).CornerRadius = UDim.new(0, 8)
 
-local TargetImage = Instance.new("ImageLabel", InfoFrame)
-TargetImage.Size = UDim2.new(0, 70, 0, 70)
-TargetImage.Position = UDim2.new(0, 10, 0, 10)
-TargetImage.BackgroundTransparency = 1
-TargetImage.Image = "rbxassetid://7992557358"
-Instance.new("UICorner", TargetImage).CornerRadius = UDim.new(1, 0)
+local ProfileImage = Instance.new("ImageLabel", ProfileFrame)
+ProfileImage.Size = UDim2.new(0, 70, 0, 70)
+ProfileImage.Position = UDim2.new(0, 10, 0, 15)
+ProfileImage.BackgroundTransparency = 1
+ProfileImage.Image = "rbxassetid://7992557358"
+ProfileImage.ScaleType = Enum.ScaleType.Crop
+Instance.new("UICorner", ProfileImage).CornerRadius = UDim.new(1, 0)
 
-local TargetInfoText = Instance.new("TextLabel", InfoFrame)
-TargetInfoText.Size = UDim2.new(1, -90, 1, -20)
-TargetInfoText.Position = UDim2.new(0, 80, 0, 10)
-TargetInfoText.BackgroundTransparency = 1
-TargetInfoText.Text = "اسم الهدف: غير محدد\nاسم المستخدم: -\nمدة الحساب: - يوم"
-TargetInfoText.Font = Enum.Font.Gotham
-TargetInfoText.TextSize = 14
-TargetInfoText.TextColor3 = Color3.new(1, 1, 1)
-TargetInfoText.TextXAlignment = Enum.TextXAlignment.Left
-TargetInfoText.TextYAlignment = Enum.TextYAlignment.Top
-TargetInfoText.TextWrapped = true
+local UserLabel = Instance.new("TextLabel", ProfileFrame)
+UserLabel.Size = UDim2.new(1, -90, 0, 35)
+UserLabel.Position = UDim2.new(0, 90, 0, 20)
+UserLabel.BackgroundTransparency = 1
+UserLabel.Text = "الحساب: غير محدد"
+UserLabel.Font = Enum.Font.GothamBold
+UserLabel.TextSize = 14
+UserLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+UserLabel.TextXAlignment = Enum.TextXAlignment.Left
+
+local UserCreatedLabel = Instance.new("TextLabel", ProfileFrame)
+UserCreatedLabel.Size = UDim2.new(1, -90, 0, 25)
+UserCreatedLabel.Position = UDim2.new(0, 90, 0, 55)
+UserCreatedLabel.BackgroundTransparency = 1
+UserCreatedLabel.Text = "تاريخ الحساب: غير معروف"
+UserCreatedLabel.Font = Enum.Font.Gotham
+UserCreatedLabel.TextSize = 14
+UserCreatedLabel.TextColor3 = Color3.fromRGB(170, 170, 170)
+UserCreatedLabel.TextXAlignment = Enum.TextXAlignment.Left
 
 local NickTextBox = Instance.new("TextBox", ScrollFrame)
 NickTextBox.Size = UDim2.new(1, -10, 0, 35)
 NickTextBox.PlaceholderText = "ابحث عن اللاعب..."
+NickTextBox.Text = ""
 NickTextBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 NickTextBox.TextColor3 = Color3.new(1, 1, 1)
 Instance.new("UICorner", NickTextBox).CornerRadius = UDim.new(0, 8)
 
-local UserLabel = Instance.new("TextLabel", ScrollFrame)
-UserLabel.Size = UDim2.new(1, -10, 0, 25)
-UserLabel.Text = "الحساب: غير محدد"
-UserLabel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
-UserLabel.TextColor3 = Color3.fromRGB(100, 200, 255)
-UserLabel.Font = Enum.Font.GothamBold
-Instance.new("UICorner", UserLabel).CornerRadius = UDim.new(0, 8)
-
--- ============================
--- قسم الأوامر
--- ============================
-local CmdLabel = Instance.new("TextLabel", ScrollFrame)
-CmdLabel.Size = UDim2.new(1, -10, 0, 25)
-CmdLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-CmdLabel.Text = "الأمر"
-CmdLabel.Font = Enum.Font.GothamBold
-CmdLabel.TextColor3 = Color3.new(1, 1, 1)
-Instance.new("UICorner", CmdLabel).CornerRadius = UDim.new(0, 8)
-
 local CmdBox = Instance.new("TextBox", ScrollFrame)
 CmdBox.Size = UDim2.new(1, -10, 0, 35)
-CmdBox.PlaceholderText = "أدخل الأمر"
+CmdBox.PlaceholderText = "اكتب الأمر هنا"
 CmdBox.Text = "/nv"
 CmdBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 CmdBox.TextColor3 = Color3.new(1, 1, 1)
 Instance.new("UICorner", CmdBox).CornerRadius = UDim.new(0, 8)
-
--- ============================
--- قسم سرعة السبام
--- ============================
-local SpeedLabel = Instance.new("TextLabel", ScrollFrame)
-SpeedLabel.Size = UDim2.new(1, -10, 0, 25)
-SpeedLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-SpeedLabel.Text = "سرعة السبام"
-SpeedLabel.Font = Enum.Font.GothamBold
-SpeedLabel.TextColor3 = Color3.new(1, 1, 1)
-Instance.new("UICorner", SpeedLabel).CornerRadius = UDim.new(0, 8)
 
 local SpeedBox = Instance.new("TextBox", ScrollFrame)
 SpeedBox.Size = UDim2.new(1, -10, 0, 35)
@@ -343,10 +323,82 @@ Instance.new("UICorner", SpamBtn).CornerRadius = UDim.new(0, 8)
 local ActionsLabel = Instance.new("TextLabel", ScrollFrame)
 ActionsLabel.Size = UDim2.new(1, -10, 0, 25)
 ActionsLabel.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-ActionsLabel.Text = "حركات الاستهداف"
+ActionsLabel.Text = "قسم الحركات"
 ActionsLabel.Font = Enum.Font.GothamBold
 ActionsLabel.TextColor3 = Color3.new(1, 1, 1)
 Instance.new("UICorner", ActionsLabel).CornerRadius = UDim.new(0, 8)
+
+local FaceBangButton = Instance.new("TextButton", ScrollFrame)
+FaceBangButton.Size = UDim2.new(1, -10, 0, 35)
+FaceBangButton.Text = "وضعية1"
+FaceBangButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+FaceBangButton.TextColor3 = Color3.new(1, 1, 1)
+FaceBangButton.Font = Enum.Font.GothamBold
+Instance.new("UICorner", FaceBangButton).CornerRadius = UDim.new(0, 8)
+
+local SuckButton = Instance.new("TextButton", ScrollFrame)
+SuckButton.Size = UDim2.new(1, -10, 0, 35)
+SuckButton.Text = "وضعية2"
+SuckButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+SuckButton.TextColor3 = Color3.new(1, 1, 1)
+SuckButton.Font = Enum.Font.GothamBold
+Instance.new("UICorner", SuckButton).CornerRadius = UDim.new(0, 8)
+
+local BenxButton = Instance.new("TextButton", ScrollFrame)
+BenxButton.Size = UDim2.new(1, -10, 0, 35)
+BenxButton.Text = "وضعية3"
+BenxButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+BenxButton.TextColor3 = Color3.new(1, 1, 1)
+BenxButton.Font = Enum.Font.GothamBold
+Instance.new("UICorner", BenxButton).CornerRadius = UDim.new(0, 8)
+
+local HeadSitButton = Instance.new("TextButton", ScrollFrame)
+HeadSitButton.Size = UDim2.new(1, -10, 0, 35)
+HeadSitButton.Text = "جلوس فوق الرأس"
+HeadSitButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+HeadSitButton.TextColor3 = Color3.new(1, 1, 1)
+HeadSitButton.Font = Enum.Font.GothamBold
+Instance.new("UICorner", HeadSitButton).CornerRadius = UDim.new(0, 8)
+
+local BackpackButton = Instance.new("TextButton", ScrollFrame)
+BackpackButton.Size = UDim2.new(1, -10, 0, 35)
+BackpackButton.Text = "حقيبة ظهر"
+BackpackButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+BackpackButton.TextColor3 = Color3.new(1, 1, 1)
+BackpackButton.Font = Enum.Font.GothamBold
+Instance.new("UICorner", BackpackButton).CornerRadius = UDim.new(0, 8)
+
+local WatchButton = Instance.new("TextButton", ScrollFrame)
+WatchButton.Size = UDim2.new(1, -10, 0, 35)
+WatchButton.Text = "مشاهدة"
+WatchButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+WatchButton.TextColor3 = Color3.new(1, 1, 1)
+WatchButton.Font = Enum.Font.GothamBold
+Instance.new("UICorner", WatchButton).CornerRadius = UDim.new(0, 8)
+
+local BangButton = Instance.new("TextButton", ScrollFrame)
+BangButton.Size = UDim2.new(1, -10, 0, 35)
+BangButton.Text = "نيك خلفي"
+BangButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+BangButton.TextColor3 = Color3.new(1, 1, 1)
+BangButton.Font = Enum.Font.GothamBold
+Instance.new("UICorner", BangButton).CornerRadius = UDim.new(0, 8)
+
+local BatchBtn = Instance.new("TextButton", ScrollFrame)
+BatchBtn.Size = UDim2.new(1, -10, 0, 35)
+BatchBtn.Text = "تخريب جماعي"
+BatchBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+BatchBtn.TextColor3 = Color3.new(1, 1, 1)
+BatchBtn.Font = Enum.Font.GothamBold
+Instance.new("UICorner", BatchBtn).CornerRadius = UDim.new(0, 8)
+
+local ShieldBtn = Instance.new("TextButton", ScrollFrame)
+ShieldBtn.Size = UDim2.new(1, -10, 0, 35)
+ShieldBtn.Text = "حماية / تنظيف"
+ShieldBtn.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+ShieldBtn.TextColor3 = Color3.new(1, 1, 1)
+ShieldBtn.Font = Enum.Font.GothamBold
+Instance.new("UICorner", ShieldBtn).CornerRadius = UDim.new(0, 8)
 
 -- متغيرات الحركات
 local targetPlayer = nil
@@ -371,6 +423,8 @@ local function setTargetFromText()
     if #search < 2 then
         targetPlayer = nil
         UserLabel.Text = "الحساب: غير محدد"
+        ProfileImage.Image = "rbxassetid://7992557358"
+        UserCreatedLabel.Text = "تاريخ الحساب: غير معروف"
         return
     end
 
@@ -386,6 +440,18 @@ local function setTargetFromText()
             UserLabel.Text = "الحساب: " .. plr.DisplayName
             
             local thumb = Players:GetUserThumbnailAsync(plr.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+            ProfileImage.Image = thumb
+            local createdText = "تاريخ الحساب: غير معروف"
+            local success, response = pcall(function()
+                return HttpService:GetAsync("https://users.roblox.com/v1/users/" .. plr.UserId)
+            end)
+            if success and response then
+                local decoded = HttpService:JSONDecode(response)
+                if decoded and decoded.created then
+                    createdText = "تاريخ الحساب: " .. string.sub(decoded.created, 1, 10)
+                end
+            end
+            UserCreatedLabel.Text = createdText
             createNotification("استهداف", "تم استهداف اللاعب " .. plr.DisplayName, thumb, 3)
             break
         end
@@ -486,7 +552,7 @@ Instance.new("UICorner", BangButton).CornerRadius = UDim.new(0, 8)
 
 local FaceBangButton = Instance.new("TextButton", ScrollFrame)
 FaceBangButton.Size = UDim2.new(1, -10, 0, 35)
-FaceBangButton.Text = "بانق وجهي"
+FaceBangButton.Text = "وضعية1"
 FaceBangButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 FaceBangButton.TextColor3 = Color3.new(1, 1, 1)
 FaceBangButton.Font = Enum.Font.GothamBold
@@ -510,7 +576,7 @@ Instance.new("UICorner", BackpackButton).CornerRadius = UDim.new(0, 8)
 
 local SuckButton = Instance.new("TextButton", ScrollFrame)
 SuckButton.Size = UDim2.new(1, -10, 0, 35)
-SuckButton.Text = "مص"
+SuckButton.Text = "وضعية2"
 SuckButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 SuckButton.TextColor3 = Color3.new(1, 1, 1)
 SuckButton.Font = Enum.Font.GothamBold
@@ -518,7 +584,7 @@ Instance.new("UICorner", SuckButton).CornerRadius = UDim.new(0, 8)
 
 local BenxButton = Instance.new("TextButton", ScrollFrame)
 BenxButton.Size = UDim2.new(1, -10, 0, 35)
-BenxButton.Text = "اغتصاب"
+BenxButton.Text = "وضعية3"
 BenxButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
 BenxButton.TextColor3 = Color3.new(1, 1, 1)
 BenxButton.Font = Enum.Font.GothamBold
@@ -828,7 +894,7 @@ BackpackButton.MouseButton1Click:Connect(function()
 end)
 
 -- ============================
--- المص
+-- الوضعية2
 -- ============================
 local suckHeartbeat = nil
 local currentDistance2 = 1.5
@@ -872,19 +938,19 @@ SuckButton.MouseButton1Click:Connect(function()
         SuckButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         createGlow(SuckButton)
         task.spawn(updateSuck)
-        createNotification("تنفيذ", "المص مفعل ✓", "rbxassetid://7992557358", 2)
+        createNotification("تنفيذ", "الوضعية2 مفعل ✓", "rbxassetid://7992557358", 2)
     else
         SuckButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         if SuckButton:FindFirstChildOfClass("UIGradient") then
             SuckButton:FindFirstChildOfClass("UIGradient"):Destroy()
         end
         suckActive = false
-        createNotification("إيقاف", "المص معطل", "rbxassetid://7992557358", 2)
+        createNotification("إيقاف", "الوضعية2 معطل", "rbxassetid://7992557358", 2)
     end
 end)
 
 -- ============================
--- الاغتصاب
+-- الوضعية3
 -- ============================
 local benxHeartbeat = nil
 getgenv().Benx = false
@@ -971,14 +1037,14 @@ BenxButton.MouseButton1Click:Connect(function()
         BenxButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         createGlow(BenxButton)
         startBenx()
-        createNotification("تنفيذ", "الاغتصاب مفعل ✓", "rbxassetid://7992557358", 2)
+        createNotification("تنفيذ", "الوضعية3 مفعل ✓", "rbxassetid://7992557358", 2)
     else
         BenxButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
         if BenxButton:FindFirstChildOfClass("UIGradient") then
             BenxButton:FindFirstChildOfClass("UIGradient"):Destroy()
         end
         stopBenx()
-        createNotification("إيقاف", "الاغتصاب معطل", "rbxassetid://7992557358", 2)
+        createNotification("إيقاف", "الوضعية3 معطل", "rbxassetid://7992557358", 2)
     end
 end)
 
