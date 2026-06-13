@@ -297,7 +297,7 @@ local function GetRoot(plr)
 end
 
 local function setTargetFromText()
-    local search = NickTextBox.Text:lower()
+    local search = string.gsub(NickTextBox.Text, "^%s*(.-)%s*$", "%1"):lower()
     if #search < 2 then
         targetPlayer = nil
         UserLabel.Text = "الحساب: غير محدد"
@@ -306,15 +306,17 @@ local function setTargetFromText()
         return
     end
 
+    local foundTarget = false
     for _, plr in pairs(Players:GetPlayers()) do
         local name = plr.Name:lower()
         local nick = plr.DisplayName:lower()
         if string.find(name, search, 1, true) or string.find(nick, search, 1, true) then
             if CheckTargetProtection(plr.Name) then
-                return
+                continue
             end
 
             targetPlayer = plr
+            foundTarget = true
             UserLabel.Text = "الحساب: " .. plr.DisplayName
             UserCreatedLabel.Text = "تاريخ الحساب: منذ " .. tostring(plr.AccountAge) .. " يوم"
 
@@ -323,11 +325,20 @@ local function setTargetFromText()
             end)
             if success and thumb then
                 ProfileImage.Image = thumb
+            else
+                ProfileImage.Image = "rbxassetid://7992557358"
             end
 
             createNotification("استهداف", "تم استهداف اللاعب " .. plr.DisplayName, thumb, 3)
             break
         end
+    end
+
+    if not foundTarget then
+        targetPlayer = nil
+        UserLabel.Text = "الحساب: غير محدد"
+        ProfileImage.Image = "rbxassetid://7992557358"
+        UserCreatedLabel.Text = "تاريخ الحساب: غير معروف"
     end
 end
 
@@ -340,6 +351,11 @@ NickTextBox.TextColor3 = Color3.new(1, 1, 1)
 NickTextBox.LayoutOrder = 3
 Instance.new("UICorner", NickTextBox).CornerRadius = UDim.new(0, 8)
 NickTextBox:GetPropertyChangedSignal("Text"):Connect(setTargetFromText)
+NickTextBox.FocusLost:Connect(function(enterPressed)
+    if enterPressed then
+        setTargetFromText()
+    end
+end)
 
 local CmdBox = Instance.new("TextBox", ScrollFrame)
 CmdBox.Size = UDim2.new(1, -10, 0, 35)
