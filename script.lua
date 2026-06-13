@@ -281,6 +281,56 @@ UserCreatedLabel.TextSize = 14
 UserCreatedLabel.TextColor3 = Color3.fromRGB(170, 170, 170)
 UserCreatedLabel.TextXAlignment = Enum.TextXAlignment.Left
 
+local targetPlayer = nil
+local bangActive = false
+local faceBangActive = false
+local headSitActive = false
+local backpackActive = false
+local suckActive = false
+local benxActive = false
+
+local function GetRoot(plr)
+    if plr and plr.Character then
+        return plr.Character:FindFirstChild("HumanoidRootPart")
+    end
+    return nil
+end
+
+local function setTargetFromText()
+    local search = NickTextBox.Text:lower()
+    if #search < 2 then
+        targetPlayer = nil
+        UserLabel.Text = "الحساب: غير محدد"
+        ProfileImage.Image = "rbxassetid://7992557358"
+        UserCreatedLabel.Text = "تاريخ الحساب: غير معروف"
+        return
+    end
+
+    for _, plr in pairs(Players:GetPlayers()) do
+        local name = plr.Name:lower()
+        local nick = plr.DisplayName:lower()
+        if string.find(name, search, 1, true) or string.find(nick, search, 1, true) then
+            if CheckTargetProtection(plr.Name) then
+                return
+            end
+
+            targetPlayer = plr
+            UserLabel.Text = "الحساب: " .. plr.DisplayName
+            UserCreatedLabel.Text = "تاريخ الحساب: منذ " .. tostring(plr.AccountAge) .. " يوم"
+
+            local success, thumb = pcall(function()
+                return Players:GetUserThumbnailAsync(plr.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
+            end)
+            if success and thumb then
+                ProfileImage.Image = thumb
+            end
+
+            createNotification("استهداف", "تم استهداف اللاعب " .. plr.DisplayName, thumb, 3)
+            break
+        end
+    end
+end
+
 local NickTextBox = Instance.new("TextBox", ScrollFrame)
 NickTextBox.Size = UDim2.new(1, -10, 0, 35)
 NickTextBox.PlaceholderText = "ابحث عن اللاعب..."
@@ -289,6 +339,7 @@ NickTextBox.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 NickTextBox.TextColor3 = Color3.new(1, 1, 1)
 NickTextBox.LayoutOrder = 3
 Instance.new("UICorner", NickTextBox).CornerRadius = UDim.new(0, 8)
+NickTextBox:GetPropertyChangedSignal("Text"):Connect(setTargetFromText)
 
 local CmdBox = Instance.new("TextBox", ScrollFrame)
 CmdBox.Size = UDim2.new(1, -10, 0, 35)
